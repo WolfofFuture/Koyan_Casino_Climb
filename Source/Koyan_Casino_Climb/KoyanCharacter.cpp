@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "KCCCharacter.h"
-#include "Misc/Optional.h"
+#include "KoyanCharacter.h"
 #include "AbilitySystemComponent.h"
+#include "Misc/Optional.h"
 #include "KCCAttributeSet.h"
 
 // Sets default values
-AKCCCharacter::AKCCCharacter()
+AKoyanCharacter::AKoyanCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -15,23 +15,22 @@ AKCCCharacter::AKCCCharacter()
 	Attributes = CreateDefaultSubobject<UKCCAttributeSet>("Attributes");
 
 }
-
-UAbilitySystemComponent* AKCCCharacter::GetAbilitySystemComponent() const
+UAbilitySystemComponent* AKoyanCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
 }
 
 // Called when the game starts or when spawned
-void AKCCCharacter::BeginPlay()
+void AKoyanCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (AbilitySystemComponent) 
+	if (AbilitySystemComponent)
 	{
 		AbilitySystemComponent->InitAbilityActorInfo(this, this);
 
 		//przypisanie defaultowych atrybutów
-		if (DefaultAttributeEffect) 
+		if (DefaultAttributeEffect)
 		{
 			FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
 			EffectContext.AddSourceObject(this);
@@ -51,6 +50,7 @@ void AKCCCharacter::BeginPlay()
 			}
 		}
 	}
+	
 }
 
 

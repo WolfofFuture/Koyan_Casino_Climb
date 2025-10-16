@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
+#include "Misc/Optional.h"
 #include "AbilitySystemComponent.h"
 #include "KCCAttributeSet.generated.h"
 
