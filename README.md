@@ -1,2 +1,3 @@
 # Koyan_Casino_Climb
-Projekt gry na praktyki i może licencjat
+
+A game in style of ZDoom but in FATE (mainly Grand Order) universe. Currently not even bare bones
