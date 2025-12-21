@@ -7,7 +7,7 @@
 		{
 			"Name": "Koyan_Casino_Climb",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
+			"LoadingPhase": "PreDefault",
 			"AdditionalDependencies": [
 				"Engine",
 				"GameplayAbilities"
