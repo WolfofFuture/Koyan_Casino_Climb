@@ -1,0 +1,43 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "PooledObject.h"
+#include "Components/ActorComponent.h"
+#include "ObjectPooled.generated.h"
+
+
+UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+class KOYAN_CASINO_CLIMB_API UObjectPooled : public UActorComponent
+{
+	GENERATED_BODY()
+
+public:	
+	// Sets default values for this component's properties
+	UObjectPooled();
+
+	UFUNCTION(BlueprintCallable, Category = "Object Pool")
+		APooledObject* SpawnPooledObject();
+	
+	UPROPERTY(EditAnywhere, Category = "Object Pool")
+		TSubclassOf<class APooledObject> PooledObjectClass;
+
+	UPROPERTY(EditAnywhere, Category = "Object Pool")
+		int PoolSize = 20;
+
+	UPROPERTY(EditAnywhere, Category = "Object Pool")
+		float PooledObjectLifeSpan = 0.0f;
+
+	UFUNCTION()
+		void OnPooledObjectDespawn(APooledObject* PoolActor);
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+	TArray<APooledObject*> ObjectPool;
+	TArray<int> SpawnedPoolIndexes;
+
+		
+};
