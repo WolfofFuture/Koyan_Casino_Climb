@@ -30,7 +30,7 @@ void APooledObject::Deactivate()
 }
 bool APooledObject::IsActive()
 {
-	return false;
+	return Active;
 }
 int APooledObject::GetPoolIndex()
 {

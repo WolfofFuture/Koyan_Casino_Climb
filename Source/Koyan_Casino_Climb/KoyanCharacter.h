@@ -33,13 +33,13 @@ protected:
 
 public:	
 	//Inicjalizacja default atrybutów
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "KoyanAtr")
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Koyan FPS")
 		TSubclassOf<class UGameplayEffect> DefaultAttributeEffect;
-		//TSoftClassPtr<class UGameplayEffect> DefaultAttributeEffect;
+		
 
 	//Zbior umiejek
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "KoyanAnili")
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Koyan FPS")
 		TArray<TSubclassOf<class UGameplayAbility>> DefaultAbilities;
-		//TArray<TSoftClassPtr<class UGameplayAbility>> DefaultAbilities;
+		
 
 };

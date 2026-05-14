@@ -6,6 +6,7 @@
 #include "AttributeSet.h"
 #include "Misc/Optional.h"
 #include "AbilitySystemComponent.h"
+#include "GameplayEffectExtension.h"
 #include "KCCAttributeSet.generated.h"
 
 #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName)\
@@ -29,5 +30,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
 	FGameplayAttributeData Armor;
 	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, Armor);
+
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	virtual bool PreGameplayEffectExecute(struct FGameplayEffectModCallbackData& Data) override;
 	
 };

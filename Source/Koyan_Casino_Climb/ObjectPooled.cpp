@@ -20,17 +20,13 @@ void UObjectPooled::BeginPlay()
 		if (World != nullptr) {
 			for (int i = 0; i < PoolSize; i++)
 			{
-				//FActorSpawnParameters SpawnParams;
-				//SpawnParams.Owner = GetOwner();
-				//SpawnParams.Instigator = GetOwner()->GetInstigator();
-				APooledObject* PooledObject = World->SpawnActor<APooledObject>(PooledObjectClass, FVector().ZeroVector, FRotator().ZeroRotator);
-				if (PooledObject != nullptr)
+				APooledObject* PoolableActor = World->SpawnActor<APooledObject>(PooledObjectClass, FVector().ZeroVector, FRotator().ZeroRotator);
+				if (PoolableActor != nullptr)
 				{
-					PooledObject->SetActive(false);
-					//PooledObject->SetLifeSpan(PooledObjectLifeSpan);
-					PooledObject->SetPoolIndex(i);
-					PooledObject->OnPooledObjectDespawn.AddDynamic(this, &UObjectPooled::OnPooledObjectDespawn);
-					ObjectPool.Add(PooledObject);
+					PoolableActor->SetActive(false);
+					PoolableActor->SetPoolIndex(i);
+					PoolableActor->OnPooledObjectDespawn.AddDynamic(this, &UObjectPooled::OnPooledObjectDespawn);
+					ObjectPool.Add(PoolableActor);
 				}
 			}
 		}
@@ -40,7 +36,8 @@ void UObjectPooled::BeginPlay()
 APooledObject* UObjectPooled::SpawnPooledObject()
 {
 
-	for (APooledObject* PoolableActor : ObjectPool) {
+	for (APooledObject* PoolableActor : ObjectPool) 
+	{
 		if (PoolableActor != nullptr && !PoolableActor->IsActive()) 
 		{
 			PoolableActor->TeleportTo(FVector(0,0,0), FRotator(0,0,0));
@@ -60,6 +57,7 @@ APooledObject* UObjectPooled::SpawnPooledObject()
 
 		if (PoolableActor != nullptr)
 		{
+			PoolableActor->SetActive(false);
 			PoolableActor->TeleportTo(FVector(0, 0, 0), FRotator(0, 0, 0));
 			PoolableActor->SetLifeSpan(PooledObjectLifeSpan);
 			PoolableActor->SetActive(true);
