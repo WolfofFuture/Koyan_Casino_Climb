@@ -27,6 +27,21 @@ public:
 	//Bierze z IAbilitySystemInterafce
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxHealth = 100;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxArmor = 100;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxKoyanPoints = 999999;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxShebaPoints = 100;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxCommandSpells = 3;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

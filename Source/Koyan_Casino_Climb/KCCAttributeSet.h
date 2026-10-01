@@ -31,7 +31,24 @@ public:
 	FGameplayAttributeData Armor;
 	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, Armor);
 
+	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
+	FGameplayAttributeData KoyanCoins;
+	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, KoyanCoins);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
+	FGameplayAttributeData ShebaCoins;
+	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, ShebaCoins);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
+	FGameplayAttributeData GorgonTail;
+	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, GorgonTail);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Attributes")
+	FGameplayAttributeData CommandSpells;
+	ATTRIBUTE_ACCESSORS(UKCCAttributeSet, CommandSpells);
+
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual bool PreGameplayEffectExecute(struct FGameplayEffectModCallbackData& Data) override;
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
 	
 };
