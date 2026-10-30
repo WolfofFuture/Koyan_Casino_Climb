@@ -21,10 +21,10 @@ class KOYAN_CASINO_CLIMB_API AKoyanCharacter : public ACharacter, public IAbilit
 	class UKCCAttributeSet* Attributes;
 
 public:
-	// Sets default values for this character's properties
+	// Przypisuje domyœlne wartoœci obiektu postaci
 	AKoyanCharacter();
 
-	//Bierze z IAbilitySystemInterafce
+	//Bierze w³aœciwoœci z IAbilitySystemInterafce
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
@@ -34,13 +34,16 @@ public:
 	int MaxArmor = 100;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	int MaxKoyanPoints = 999999;
+	int MaxKoyanCoins = 999999;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	int MaxShebaPoints = 100;
+	int MaxShebaCoins = 100;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	int MaxCommandSpells = 3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	int MaxGorgonTail = 30;
 
 protected:
 	// Called when the game starts or when spawned
@@ -52,7 +55,7 @@ public:
 		TSubclassOf<class UGameplayEffect> DefaultAttributeEffect;
 		
 
-	//Zbior umiejek
+	//Inicjalizacja default umiejêtnoœci
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Koyan FPS")
 		TArray<TSubclassOf<class UGameplayAbility>> DefaultAbilities;
 		

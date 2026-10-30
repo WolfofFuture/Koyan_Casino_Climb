@@ -23,15 +23,19 @@ void UKCCAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, f
 	}
 	else if (Attribute == GetKoyanCoinsAttribute())
 	{
-		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxKoyanPoints);
+		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxKoyanCoins);
 	}
 	else if (Attribute == GetShebaCoinsAttribute())
 	{
-		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxShebaPoints);
+		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxShebaCoins);
 	}
 	else if (Attribute == GetCommandSpellsAttribute())
 	{
 		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxCommandSpells);
+	}
+	else if (Attribute == GetGorgonTailAttribute())
+	{
+		NewValue = FMath::Clamp(NewValue, 0, KoyanChar->MaxGorgonTail);
 	}
 
 }
@@ -55,9 +59,9 @@ bool UKCCAttributeSet::PreGameplayEffectExecute(FGameplayEffectModCallbackData& 
 			SetHealth(KoyanChar->MaxHealth);
 			return false;
 		}
-		else if (Data.EvaluatedData.Attribute == GetKoyanCoinsAttribute() && GetKoyanCoins() + AbsoluteMagnitude >= KoyanChar->MaxKoyanPoints)
+		else if (Data.EvaluatedData.Attribute == GetKoyanCoinsAttribute() && GetKoyanCoins() + AbsoluteMagnitude >= KoyanChar->MaxKoyanCoins)
 		{
-			SetKoyanCoins(KoyanChar->MaxKoyanPoints);
+			SetKoyanCoins(KoyanChar->MaxKoyanCoins);
 			return false;
 		}
 		else if (Data.EvaluatedData.Attribute == GetCommandSpellsAttribute() && GetCommandSpells() + AbsoluteMagnitude >= KoyanChar->MaxCommandSpells)
@@ -65,9 +69,9 @@ bool UKCCAttributeSet::PreGameplayEffectExecute(FGameplayEffectModCallbackData& 
 			SetCommandSpells(KoyanChar->MaxCommandSpells);
 			return false;
 		}
-		else if (Data.EvaluatedData.Attribute == GetShebaCoinsAttribute() && GetShebaCoins() + AbsoluteMagnitude >= KoyanChar->MaxShebaPoints)
+		else if (Data.EvaluatedData.Attribute == GetShebaCoinsAttribute() && GetShebaCoins() + AbsoluteMagnitude >= KoyanChar->MaxShebaCoins)
 		{
-			SetShebaCoins(KoyanChar->MaxShebaPoints);
+			SetShebaCoins(KoyanChar->MaxShebaCoins);
 			return false;
 		}
 	}
